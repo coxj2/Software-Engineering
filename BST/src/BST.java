@@ -148,6 +148,7 @@ public class BST {
 		tree.insert(25);
 		tree.insert(15);
 		tree.insert(16);
+		System.out.println("Test 1");
 		System.out.println("Original Tree : ");
 		tree.display(tree.root);		
 		System.out.println("");
