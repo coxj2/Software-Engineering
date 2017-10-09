@@ -1,9 +1,34 @@
-public class BST {
-	public static  Node root;
-	
-	public BST(){
-		this.root = null;
+public class LCA {
+	Node root;
+	class Node{
+		int value;
+		Node left;
+		Node right;	
+		Node(int data){
+			value = data;
+			left = null;
+			right = null;
+		}
 	}
+	
+	
+	Node lca(Node node, int n1, int n2) 
+	{
+	        if (node == null)
+	            return null;
+	  
+	        // If both n1 and n2 are smaller than root, then LCA lies in left
+	        if (node.value > n1 && node.value > n2)
+	            return lca(node.left, n1, n2);
+	  
+	        // If both n1 and n2 are greater than root, then LCA lies in right
+	        if (node.value < n1 && node.value < n2) 
+	            return lca(node.right, n1, n2);
+	  
+	        return node;
+	}
+	
+	
 	
 	public boolean find(int node){
 		Node current = root;
@@ -20,87 +45,7 @@ public class BST {
 		}
 		return false;
 	}
-	public boolean delete(int id){
-		Node parent = root;
-		Node current = root;
-		boolean isLeftChild = false;
-		while(current.value!=id){
-			parent = current;
-			if(current.value>id){
-				isLeftChild = true;
-				current = current.left;
-			}else{
-				isLeftChild = false;
-				current = current.right;
-			}
-			if(current ==null){
-				return false;
-			}
-		}
-		//if i am here that means we have found the node
-		//Case 1: if node to be deleted has no children
-		if(current.left==null && current.right==null){
-			if(current==root){
-				root = null;
-			}
-			if(isLeftChild ==true){
-				parent.left = null;
-			}else{
-				parent.right = null;
-			}
-		}
-		//Case 2 : if node to be deleted has only one child
-		else if(current.right==null){
-			if(current==root){
-				root = current.left;
-			}else if(isLeftChild){
-				parent.left = current.left;
-			}else{
-				parent.right = current.left;
-			}
-		}
-		else if(current.left==null){
-			if(current==root){
-				root = current.right;
-			}else if(isLeftChild){
-				parent.left = current.right;
-			}else{
-				parent.right = current.right;
-			}
-		}else if(current.left!=null && current.right!=null){
-			
-			//now we have found the minimum element in the right sub tree
-			Node successor	 = getSuccessor(current);
-			if(current==root){
-				root = successor;
-			}else if(isLeftChild){
-				parent.left = successor;
-			}else{
-				parent.right = successor;
-			}			
-			successor.left = current.left;
-		}		
-		return true;		
-	}
 	
-	public Node getSuccessor(Node deleleNode){
-		Node successsor =null;
-		Node successsorParent =null;
-		Node current = deleleNode.right;
-		while(current!=null){
-			successsorParent = successsor;
-			successsor = current;
-			current = current.left;
-		}
-		//check if successor has the right child, it cannot have left child for sure
-		// if it does have the right child, add it to the left of successorParent.
-//		successsorParent
-		if(successsor!=deleleNode.right){
-			successsorParent.left = successsor.right;
-			successsor.right = deleleNode.right;
-		}
-		return successsor;
-	}
 	public void insert(int value){
 		Node newNode = new Node(value);
 		if(root == null){
@@ -135,7 +80,7 @@ public class BST {
 		}
 	}
 	public static void main(String arg[]){
-		BST tree = new BST();
+		LCA tree = new LCA();
 		tree.insert(3);
 		tree.insert(8);
 		tree.insert(1);
@@ -153,22 +98,8 @@ public class BST {
 		tree.display(tree.root);		
 		System.out.println("");
 		System.out.println("Check whether Node with value 4 exists : " + tree.find(4));
-		System.out.println("Delete Node with no children (2) : " + tree.delete(2));		
-		tree.display(root);
-		System.out.println("\n Delete Node with one child (4) : " + tree.delete(4));		
-		tree.display(root);
-		System.out.println("\n Delete Node with Two children (10) : " + tree.delete(10));		
-		tree.display(root);
-	}
-}
-
-class Node{
-	int value;
-	Node left;
-	Node right;	
-	public Node(int data){
-		this.value = data;
-		left = null;
-		right = null;
+		//tree.display(root);
+		//tree.display(root);
+		//tree.display(root);
 	}
 }
