@@ -29,7 +29,7 @@ public class LCA {
 	}
 
 	public static void main(String arg[]) {
-		LCA tree = new LCA();
+		/*LCA tree = new LCA();
 		tree.root = new Node(15);
 		tree.root.left = new Node(12);
 		tree.root.right = new Node(18);
@@ -40,5 +40,6 @@ public class LCA {
 		int n1 = tree.root.left.left.value, n2 = tree.root.left.right.value;
 		Node parent = tree.findlca(tree.root, n1, n2);
 		System.out.println("LCA of " + n1 + " and " + n2 + " is " + parent.value);
+		*/
 	}
 }

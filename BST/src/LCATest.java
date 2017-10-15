@@ -4,6 +4,13 @@ import org.junit.Test;
 
 public class LCATest {
 	
+	@Test 
+	public void createNode(){
+		int value = 0;
+		Node left = null;
+		Node right = null;
+	}
+	
 	@Test
 	public void testFindLCA(){
 		LCA testTree = new LCA();
@@ -20,24 +27,24 @@ public class LCATest {
 	}
 	
 	@Test
-	public void treeNotEmpty(){
+	public void testEmpty(){
 		LCA nullTree = null;
 		assertNull(nullTree);
 		
 		LCA testTree = new LCA();
 		assertNotNull(testTree);
-	}
-	
-	@Test
-	public void rootNotEmpty(){
+		
 		LCA nullRootTree = new LCA();
 		nullRootTree.root = null;
 		assertNull(nullRootTree.root);
-		
-		LCA testTree = new LCA();
-		testTree.root = new Node(5);
-		assertNotNull(testTree.root);
-		
+
+		LCA testTree1 = new LCA();
+		testTree1.root = new Node(5);
+		testTree1.root.right = new Node(8);
+		testTree1.root.left = new Node(2);
+		assertNotNull(testTree1.root);
+		assertNotNull(testTree1.root.right);
+		assertNotNull(testTree1.root.left);
 	}
 
 }
