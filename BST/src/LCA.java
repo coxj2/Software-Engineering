@@ -28,18 +28,21 @@ public class LCA {
 		return node;
 	}
 
-	public static void main(String arg[]) {
+	public static void main(String arg[]){ 
 		/*LCA tree = new LCA();
-		tree.root = new Node(15);
-		tree.root.left = new Node(12);
-		tree.root.right = new Node(18);
-		tree.root.left.left = new Node(9);
-		tree.root.left.right = new Node(13);
-		tree.root.left.right.left = new Node(11);
-		tree.root.left.right.right = new Node(14);
-		int n1 = tree.root.left.left.value, n2 = tree.root.left.right.value;
-		Node parent = tree.findlca(tree.root, n1, n2);
-		System.out.println("LCA of " + n1 + " and " + n2 + " is " + parent.value);
-		*/
-	}
+		tree.root = new Node(12);
+		tree.root.left = new Node(8);
+		tree.root.right = new Node(16);
+		tree.root.left.left = new Node(6);
+		tree.root.left.right = new Node(10);
+		tree.root.right.left = new Node(14);
+		tree.root.right.right = new Node(18);
+		tree.root.left.left.left = new Node(4);
+		tree.root.left.left.right = new Node(7);
+		int n1 = tree.root.left.left.left.value; //4
+		int n2 = tree.root.left.left.right.value; //7
+		Node lca = tree.findlca(tree.root, n1, n2); //6
+		System.out.println("LCA of " + n1 + " and " + n2 + " is " + lca.value);
+	*/
+	}	
 }
