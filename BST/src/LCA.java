@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 class Node {
 	int value;
 	Node left;
@@ -29,7 +32,9 @@ public class LCA {
 	}
 
 	public static void main(String arg[]){ 
-		/*LCA tree = new LCA();
+		LCA tree = new LCA();
+		Scanner input = new Scanner(System.in);
+		try{
 		tree.root = new Node(12);
 		tree.root.left = new Node(8);
 		tree.root.right = new Node(16);
@@ -39,10 +44,23 @@ public class LCA {
 		tree.root.right.right = new Node(18);
 		tree.root.left.left.left = new Node(4);
 		tree.root.left.left.right = new Node(7);
-		int n1 = tree.root.left.left.left.value; //4
-		int n2 = tree.root.left.left.right.value; //7
-		Node lca = tree.findlca(tree.root, n1, n2); //6
+		//int n1 = tree.root.left.left.left.value; //4
+		//int n2 = tree.root.left.left.right.value; //7
+		System.out.println("Requires an lca 0 < lca < 18");
+		System.out.println("If a value is entered that is not already present in the tree, this"
+				+ " value will be created in a new Node");
+		System.out.println("Enter the first value: ");
+		int n1 = input.nextInt();
+		System.out.println("Enter the second value: ");
+		int n2 = input.nextInt();
+		Node lca = tree.findlca(tree.root, n1, n2);
 		System.out.println("LCA of " + n1 + " and " + n2 + " is " + lca.value);
-	*/
-	}	
+		}
+		catch (InputMismatchException e){
+		    System.err.println("IndexOutOfBoundsException: " + "Values must be positive whole numbers " + e.getMessage());
+		}
+		catch (Exception e) {
+		    System.err.println("IndexOutOfBoundsException: " + "Values must be within set parameters " + e.getMessage());
+		} 
+	}
 }

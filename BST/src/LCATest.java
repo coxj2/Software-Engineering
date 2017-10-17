@@ -1,5 +1,8 @@
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class LCATest {
@@ -12,6 +15,20 @@ public class LCATest {
 		testTree.root.right = null;
 		testTree.root.left = null;
 	}
+	
+	@Test
+	public void testNullNode(){
+		LCA nullRootTree = new LCA();
+		nullRootTree.root = null;
+		assertEquals(nullRootTree.root, null);
+		assertNull(nullRootTree.root);
+	}
+	
+//	@Test
+//	public void testNullValue(){
+//		LCA nullValueTree = new LCA();
+//		nullValueTree.root = new Node(0);
+//	}
 	
 	@Test
 	public void testFindLCA(){
@@ -29,6 +46,8 @@ public class LCATest {
 		Node lca2 = testTree.findlca(testTree.root, testTree.root.right.right.value, testTree.root.right.left.value);
 		assertEquals(16, lca2.value);
 		
+		Node lca3 = testTree.findlca(null, testTree.root.right.value, testTree.root.left.value);
+		assertEquals(null, lca3);
 	}
 	
 	@Test
@@ -39,10 +58,6 @@ public class LCATest {
 		LCA testTree = new LCA();
 		assertNotEquals(testTree, null);
 		
-		LCA nullRootTree = new LCA();
-		nullRootTree.root = null;
-		assertEquals(nullRootTree.root, null);
-
 		LCA testTree1 = new LCA();
 		testTree1.root = new Node(5);
 		testTree1.root.right = new Node(8);
@@ -51,5 +66,16 @@ public class LCATest {
 		assertNotEquals(testTree1.root.right, null);
 		assertNotEquals(testTree1.root.left, null);
 	}
-
+	
+	@Test
+	public void testMain() throws IOException{
+		LCA test = new LCA();
+		//test.main(new String[] {"arg1", "arg2", "arg3"});
+	}
+	
+	@Test (expected = Exception.class)
+	public void testException(){
+		int[] x = new int[2];
+		assertEquals(1, x[4]);
+	}
 }
