@@ -31,7 +31,7 @@ public class LCA {
 		return node;
 	}
 
-	public static void main(String arg[]){ 
+	/*public static void main(String arg[]){ 
 		LCA tree = new LCA();
 		Scanner input = new Scanner(System.in);
 		try{
@@ -44,8 +44,6 @@ public class LCA {
 		tree.root.right.right = new Node(18);
 		tree.root.left.left.left = new Node(4);
 		tree.root.left.left.right = new Node(7);
-		//int n1 = tree.root.left.left.left.value; //4
-		//int n2 = tree.root.left.left.right.value; //7
 		System.out.println("Requires an lca 0 < lca < 18");
 		System.out.println("If a value is entered that is not already present in the tree, this"
 				+ " value will be created in a new Node");
@@ -62,5 +60,5 @@ public class LCA {
 		catch (Exception e) {
 		    System.err.println("IndexOutOfBoundsException: " + "Values must be within set parameters " + e.getMessage());
 		} 
-	}
+	}*/
 }

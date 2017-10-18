@@ -1,8 +1,5 @@
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 public class LCATest {
@@ -23,12 +20,6 @@ public class LCATest {
 		assertEquals(nullRootTree.root, null);
 		assertNull(nullRootTree.root);
 	}
-	
-//	@Test
-//	public void testNullValue(){
-//		LCA nullValueTree = new LCA();
-//		nullValueTree.root = new Node(0);
-//	}
 	
 	@Test
 	public void testFindLCA(){
@@ -51,6 +42,18 @@ public class LCATest {
 	}
 	
 	@Test
+	public void testNegativeNumbers(){
+		LCA testTree = new LCA();
+		testTree.root = new Node(0);
+		testTree.root.left = new Node(-4);
+		testTree.root.right = new Node(4);
+		testTree.root.left.right = new Node(-2);
+		testTree.root.left.left = new Node(-6);
+		Node lca = testTree.findlca(testTree.root, testTree.root.left.left.value, testTree.root.left.right.value);
+		assertEquals(-4, lca.value);
+	}
+	
+	@Test
 	public void testEmpty(){
 		LCA nullTree = null;
 		assertEquals(nullTree, null);
@@ -65,17 +68,5 @@ public class LCATest {
 		assertNotEquals(testTree1.root, null);
 		assertNotEquals(testTree1.root.right, null);
 		assertNotEquals(testTree1.root.left, null);
-	}
-	
-	@Test
-	public void testMain() throws IOException{
-		LCA test = new LCA();
-		//test.main(new String[] {"arg1", "arg2", "arg3"});
-	}
-	
-	@Test (expected = Exception.class)
-	public void testException(){
-		int[] x = new int[2];
-		assertEquals(1, x[4]);
 	}
 }
