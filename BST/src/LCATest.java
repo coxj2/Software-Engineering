@@ -3,14 +3,28 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class LCATest {
+
+	@Test
+	public void testTree(){
+		LCA tree = new LCA();
+		assertNotEquals(null, tree);
+	}
 	
 	@Test
-	public void testConstructor(){
-		LCA testTree = new LCA();
-		testTree.root = new Node(2);
-		testTree.root.value = 0;
-		testTree.root.right = null;
-		testTree.root.left = null;
+	public void testNullTree(){
+		LCA nullTree = null;
+		assertEquals(nullTree, null);
+	}
+	
+	@Test
+	public void testNode(){
+		LCA test = new LCA();
+		test.root = new Node(4);
+		test.root.right = new Node(6);
+		test.root.left = new Node(2);
+		assertNotEquals(null, test.root);
+		assertNotEquals(null, test.root.right);
+		assertNotEquals(null, test.root.left);
 	}
 	
 	@Test
@@ -18,7 +32,6 @@ public class LCATest {
 		LCA nullRootTree = new LCA();
 		nullRootTree.root = null;
 		assertEquals(nullRootTree.root, null);
-		assertNull(nullRootTree.root);
 	}
 	
 	@Test
@@ -54,19 +67,12 @@ public class LCATest {
 	}
 	
 	@Test
-	public void testEmpty(){
-		LCA nullTree = null;
-		assertEquals(nullTree, null);
-		
+	public void testNonExistentValue(){
 		LCA testTree = new LCA();
-		assertNotEquals(testTree, null);
-		
-		LCA testTree1 = new LCA();
-		testTree1.root = new Node(5);
-		testTree1.root.right = new Node(8);
-		testTree1.root.left = new Node(2);
-		assertNotEquals(testTree1.root, null);
-		assertNotEquals(testTree1.root.right, null);
-		assertNotEquals(testTree1.root.left, null);
+		testTree.root = new Node(4);
+		testTree.root.right = new Node(6);
+		testTree.root.left = new Node(2);
+		Node lca = testTree.findlca(testTree.root, 3, testTree.root.right.value);
+		assertEquals(4, lca.value);
 	}
 }
