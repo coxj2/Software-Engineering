@@ -1,6 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+//This is assignment 2
 class Node {
 	int value;
 	Node left;
