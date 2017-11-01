@@ -1,85 +1,41 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import org.junit.Test;
 
 public class DAGLCATest {
+	DAGLCA<Node> dagA = new DAGLCA<Node>();
+	ArrayList<Node> a;
 
-	@Test
-	public void testContains(){
-		DAGLCA<Integer, Integer> bst = new DAGLCA<Integer, Integer>();
-		assertEquals("Checking contains() on empty tree", false, bst.contains(5));
-		
-		bst.put(7, 7);   	//        _7_
-		bst.put(8, 8);   	//      /     \
-		bst.put(3, 3);   	//    _3_      8
-		bst.put(1, 1);   	//  /     \     
-		bst.put(2, 2);   	// 1       6     
-		bst.put(6, 6);   	//  \     /
-		bst.put(4, 4);   	//   2   4
-		bst.put(5, 5);   	//        \
-		                	//         5
-
-
-		assertSame("Checking contains() on a non-empty tree", true, bst.contains(6)); 
-	}
 	
+
 	@Test
-	public void testHeight() {
-		DAGLCA<Integer, Integer> bst = new DAGLCA<Integer, Integer>();
-		assertEquals("Checking height of empty tree", -1, bst.height());
-
-		bst.put(7, 7);   
-		assertEquals("Checking height of single node tree", 0, bst.height());
-
-						   //         _7_
-		bst.put(8, 8);     //       /     \
-		bst.put(3, 3);     //     _3_      8
-		bst.put(1, 1);     //   /     \
-		bst.put(2, 2);     //  1       5
-		bst.put(5, 5);     //   \     
-						   //    2   
-
-		assertEquals("Checking height of non-empty tree", 3, bst.height());
-	}
-	
-	@Test
-	public void testLowestCommonAncestor(){
-		DAGLCA<Integer, Integer> bst = new DAGLCA<Integer, Integer>();
-		assertSame("Checking lowest common ancestor of an empty tree", null, bst.lowestCommonAncestor(bst.root, 7, 8)); 
+	public void test() {
+		a = new ArrayList<>();
+		dagA = new DAGLCA<Node>();
+		//assertNull("Testing Null DAG and ArrayList",dagA.lowestCommonAncestor(a.get(9), a.get(8)));
 		
-		bst.put(7, 7); 		//        _7_
-		bst.put(8, 8);   	//      /     \
-		bst.put(3, 3);   	//    _3_      8
-		bst.put(1, 1);   	//  /     \     
-		bst.put(2, 2);   	// 1       6     
-		bst.put(6, 6);   	//  \     /
-		bst.put(4, 4);   	//   2   4
-		bst.put(5, 5);   	//        \
-		                	//         5
+		a = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            a.add(new Node(i));
+            }
+        dagA.setRoot(a.get(0));
+        a.get(0).addEdge(a.get(1));
+        a.get(0).addEdge(a.get(2));
+        a.get(1).addEdge(a.get(3));
+        a.get(1).addEdge(a.get(4));
+        a.get(2).addEdge(a.get(4));
+        a.get(2).addEdge(a.get(5));
+        a.get(2).addEdge(a.get(6));
+        a.get(5).addEdge(a.get(8));
+        a.get(6).addEdge(a.get(8));
+        a.get(6).addEdge(a.get(7));
+        a.get(6).addEdge(a.get(9));
+        a.get(7).addEdge(a.get(9));
+		 assertEquals("a(a9,a8) = a6", a.get(6), dagA.lowestCommonAncestor(a.get(9), a.get(8)));
+		 assertEquals("a(a8,a4) = a2", a.get(2), dagA.lowestCommonAncestor(a.get(8), a.get(4)));
+		 assertEquals("a(a8,a3) = a0", a.get(0), dagA.lowestCommonAncestor(a.get(8), a.get(3)));
 
-		assertSame("Checking lowest common ancestor of tree that doesn't contain one of the keys", null, bst.lowestCommonAncestor(bst.root, 7, 9)); 
-		assertSame("Checking lowest common ancestor of tree that doesn't contain both of the keys", null, bst.lowestCommonAncestor(bst.root, -5, 9)); 
-		assertSame("Checking lowest common ancestor of two Keys", 7, bst.lowestCommonAncestor(bst.root, 7, 8)); 
-		assertSame("Checking lowest common ancestor of two Keys", 3, bst.lowestCommonAncestor(bst.root, 6, 2)); 
-	}
-
-/*__________________________________________________________________________________________________________________________*/
-	
-	// Problems:
-	// Values for 'from' and 'to' must be in Value form, not Node - put() will have to be changed. 
-	// Deleting Nodes will need to actually remove element from the array, rather than replace them with null.
-	// Need to find a way of connecting Values to their corresponding Nodes to use in the put() function.
-	@Test
-	public void testDAGContains(){
-		DAGLCA<Integer> dag = new DAGLCA<Integer>();
-		
-		assertEquals("Checking contains() on empty dag.", false, dag.contains(10));
-		
-		dag.put(7, null, null); 		//        (7)
-		dag.put(8, 7, 10);   			//   	  (7) -> (8) -> (10)
-		
-		//assertEquals("Checking DAG contains() a particular Value.", true, dag.contains(7));
-		
 	}
 
 }
