@@ -29,14 +29,15 @@ public class DAGLCA<T> {
 		this.root = root;
 	}
 	
-	private ArrayList<Node> DFS(Node node, Node target, ArrayList<Node> list, Stack<Node> stack) { //Depth first search method
+	//Depth first search method
+	private ArrayList<Node> DFS(Node node, Node toFind, ArrayList<Node> list, Stack<Node> stack) { 
         stack.push(node);
         for (Node theNode : node.nodeList) {
-            if (theNode.equals(target)) {
+            if (theNode.equals(toFind)) {
                 list.addAll(stack);
                 return list;
             }
-            DFS(theNode, target, list, stack);
+            DFS(theNode, toFind, list, stack);
         }
         stack.pop();
         return list;
@@ -45,18 +46,18 @@ public class DAGLCA<T> {
 
 	
 	
-    public Node lowestCommonAncestor(Node n1, Node n2) {
-    	if(getRoot() == null || n1 == null || n2 == null) return null;
-        return lowestCommonAncestor(getRoot(), n1, n2);
+    public Node lca(Node n1, Node n2) {
+    	if(getRoot() == null || n1 == null || n2 == null) 
+    		return null;
+        return lca(getRoot(), n1, n2);
     }
 
-    private Node lowestCommonAncestor(Node node, Node n1, Node n2) {
-        
+    private Node lca(Node node, Node n1, Node n2) {
         ArrayList<Node> list1;
         ArrayList<Node> list2;
         ArrayList<Node> minList;
         ArrayList<Node> maxList;
-        ArrayList<Node> set;
+        ArrayList<Node> output;
         list1 = DFS(node, n1, new ArrayList<>(), new Stack<>());
         list2 = DFS(node, n2, new ArrayList<>(), new Stack<>());
         if (list1 == null || list2 == null) {
@@ -66,17 +67,17 @@ public class DAGLCA<T> {
         if (list1.size() <= list2.size()) {
             minList = list1;
             maxList = list2;
-        } else {
+        } 
+        else {
             minList = list2;
             maxList = list1;
         }
-        
-        set = new ArrayList<>();
+        output = new ArrayList<>();
         for (Node n : minList) {
-            set.add(n);
+            output.add(n);
         }
-        for (int i = maxList.size() - 1; i >= 0; i--) {
-            if (set.contains(maxList.get(i))) {
+        for (int i = maxList.size()-1; i >= 0; i--) {
+            if (output.contains(maxList.get(i))) {
                 return maxList.get(i);
             }
         }

@@ -8,29 +8,29 @@ public class DAGLCATest {
 	@Test
 	public void testLca() {
 		DAGLCA<Node> dagA = new DAGLCA<Node>();
-		ArrayList<Node> a = new ArrayList<>();
+		ArrayList<Node> testList = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
-			a.add(new Node(i));
+			testList.add(new Node(i));
 		}
-		dagA.setRoot(a.get(0));
-		a.get(0).addEdge(a.get(1));
-		a.get(0).addEdge(a.get(2));
-		a.get(1).addEdge(a.get(3));
-		a.get(1).addEdge(a.get(4));
-		a.get(2).addEdge(a.get(4));
-		a.get(2).addEdge(a.get(5));
-		a.get(2).addEdge(a.get(6));
-		a.get(5).addEdge(a.get(8));
-		a.get(6).addEdge(a.get(8));
-		a.get(6).addEdge(a.get(7));
-		a.get(6).addEdge(a.get(9));
-		a.get(7).addEdge(a.get(9));
-		assertEquals(a.get(6), dagA.lca(a.get(9), a.get(8)));
-		assertEquals(a.get(2), dagA.lca(a.get(8), a.get(4)));
-		assertEquals(a.get(0), dagA.lca(a.get(8), a.get(3)));
-		assertNotEquals(a.get(0), dagA.lca(null, a.get(8)));
-		assertNotEquals(a.get(0), dagA.lca(a.get(8), null));
-		assertNotEquals(null, dagA.lca(a.get(8), a.get(9)));
+		dagA.setRoot(testList.get(0));
+		testList.get(0).addEdge(testList.get(1));
+		testList.get(0).addEdge(testList.get(2));
+		testList.get(1).addEdge(testList.get(3));
+		testList.get(1).addEdge(testList.get(4));
+		testList.get(2).addEdge(testList.get(4));
+		testList.get(2).addEdge(testList.get(5));
+		testList.get(2).addEdge(testList.get(6));
+		testList.get(5).addEdge(testList.get(8));
+		testList.get(6).addEdge(testList.get(8));
+		testList.get(6).addEdge(testList.get(7));
+		testList.get(6).addEdge(testList.get(9));
+		testList.get(7).addEdge(testList.get(9));
+		assertEquals(testList.get(6), dagA.lca(testList.get(9), testList.get(8)));
+		assertEquals(testList.get(2), dagA.lca(testList.get(8), testList.get(4)));
+		assertEquals(testList.get(0), dagA.lca(testList.get(8), testList.get(3)));
+		assertNotEquals(testList.get(0), dagA.lca(null, testList.get(8)));
+		assertNotEquals(testList.get(0), dagA.lca(testList.get(8), null));
+		assertNotEquals(null, dagA.lca(testList.get(8), testList.get(9)));
 	}
 
 	@Test
@@ -38,9 +38,9 @@ public class DAGLCATest {
 		DAGLCA<Node> testDag = new DAGLCA<Node>();
 		assertEquals(testDag.getRoot(), null);
 		
-		ArrayList<Node> a = new ArrayList<>();
-        a.add(new Node(3));
-		testDag.setRoot(a.get(0));
+		ArrayList<Node> testList = new ArrayList<>();
+		testList.add(new Node(3));
+		testDag.setRoot(testList.get(0));
 		assertNotEquals(testDag.getRoot(), null);
 	}
 
