@@ -24,7 +24,7 @@ Assignment 5
   Both Jar files must be added to path build for successful configuration
   
   Instructions
-  1) Run Java program and insert multiple usernames. Once complete, tsv file will be created. Data is already inserted, more can be inserted.
+  1) Run Java program with configured jar files and insert multiple usernames. Once complete, data will be added to already created tsv file. Data is already inserted, more can be inserted.
   2) Open HTML file.
   
   Visualisation
