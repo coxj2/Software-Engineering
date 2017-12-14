@@ -24,9 +24,9 @@ Assignment 5
   Both Jar files must be added to path build for successful configuration
   
   Instructions
-  1) Run Java program and insert multiple usernames. Once complete, tsv file will be created. 
+  1) Run Java program and insert multiple usernames. Once complete, tsv file will be created. Data is already inserted, more can be inserted.
   2) Open HTML file.
   
   Visualisation
   Instructions
-  HTML file uses tsv file to create bar chart which includes number of public repositories and number of followers for each of the        users which is entered into the java program. HTML file also makes use of http://d3js.org/d3.v3.min.js file.
+  HTML file uses tsv file to create bar chart which includes number of public repositories and number of followers for each of the        users which is entered into the java program. As already mentioned, demonstrators can add to users integrated with. HTML file also makes use of http://d3js.org/d3.v3.min.js file.
