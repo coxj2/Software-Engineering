@@ -13,24 +13,25 @@ public class GithubAPI {
 
 	public static void main(String[] args) throws IOException {
 		boolean complete = false;
+		FileWriter tsv = new FileWriter("src//data.tsv", true);
+		//tsv.append("User	Followers	Repos\n");
 		while(!complete) {
 			System.out.print("\n" + "Username:\n");
-			FileWriter tsv = new FileWriter("src//visualise.tsv", false);
-			tsv.append("User, Followers, Repos\n");
 			Scanner input = new Scanner (System.in);
 			String user = input.nextLine();
 			if (user == "done") {
 				complete  = true;
+				break;
 			}
 			int repos = publicRepos(user);
 			int followers = followers(user);
 			System.out.print("Followers: " + followers + "\n" + "Public Repos: " + repos);
-			tsv.append(user + ",");
-			tsv.append(String.valueOf(followers) +",");
-			tsv.append(String.valueOf(repos));
+			tsv.append(user + "	");
+			tsv.append(String.valueOf(followers) +"	");
+			tsv.append(String.valueOf(repos) + "\n");
 			tsv.flush();
-			tsv.close();
 		}
+		tsv.close();
 	}
 	
 		static int publicRepos (String username) throws IOException {
@@ -43,7 +44,7 @@ public class GithubAPI {
 		}
 	
 		static int followers (String username) throws IOException {
-			FileWriter tsv = new FileWriter("src//visualise.tsv", false);
+			FileWriter tsv = new FileWriter("src//data.tsv", true);
 			int followers = 0;
 			UserService userService = new UserService();
 			for (User user : userService.getFollowers(username)){
