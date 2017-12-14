@@ -13,9 +13,20 @@ Assignment 3
 Assingment 4
   10 Page Report: Measuring and Assessing the Software Engineering Process
 
+
 Assignment 5
-  Github API Access
+  Github API Integration and Visualisation
+  
+  Integration
   Theory, Concept and Java API taken from https://github.com/eclipse/egit-github/tree/master/org.eclipse.egit.github.core 
   Java API library Jar file avialable at: https://oss.sonatype.org/index.html#nexus-search;quick%7Eorg.eclipse.egit.github.core
   GSon Jar file available at: https://mvnrepository.com/artifact/com.google.code.gson/gson/2.3.1
   Both Jar files must be added to path build for successful configuration
+  
+  Instructions
+  1) Run Java program and insert multiple usernames. Once complete, tsv file will be created. 
+  2) Open HTML file.
+  
+  Visualisation
+  Instructions
+  HTML file uses tsv file to create bar chart which includes number of public repositories and number of followers for each of the        users which is entered into the java program.
