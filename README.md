@@ -29,4 +29,4 @@ Assignment 5
   
   Visualisation
   Instructions
-  HTML file uses tsv file to create bar chart which includes number of public repositories and number of followers for each of the        users which is entered into the java program.
+  HTML file uses tsv file to create bar chart which includes number of public repositories and number of followers for each of the        users which is entered into the java program. HTML file also makes use of http://d3js.org/d3.v3.min.js file.
